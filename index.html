@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pathfinding Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>PATHFINDING VISUALIZER</h1>
+
+  <!-- Guide Button -->
+  <button id="guideBtn">ℹ️ Guide</button>
+
+  <!-- Guide Modal (multi-slide) -->
+  <div id="guideModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <!-- Slides -->
+      <div class="guide-slide" id="slide1">
+        <h2>Welcome 🎉</h2>
+        <p>This <b>Pathfinding Visualizer</b> helps you understand how graph algorithms work step by step.</p>
+      </div>
+      <div class="guide-slide" id="slide2" style="display:none;">
+        <h2>How to Use 🛠</h2>
+        <ul>
+          <li>👆 Left-click = Set Start, End, or Walls</li>
+          <li>🖱 Right-click = Cycle terrains (Normal / Grass / Water)</li>
+          <li>▶ Choose an algorithm and press Run</li>
+          <li>🧹 Use Clear Grid to reset</li>
+        </ul>
+      </div>
+      <div class="guide-slide" id="slide3" style="display:none;">
+        <h2>Algorithms 🤖</h2>
+        <ul>
+          <li>BFS – Unweighted shortest path</li>
+          <li>Dijkstra – Weighted shortest path</li>
+          <li>A* – Optimized heuristic search</li>
+          <li>DFS – Depth-first traversal</li>
+          <li>Greedy Best-First – Heuristic only</li>
+          <li>Bidirectional BFS – Double-ended BFS</li>
+        </ul>
+      </div>
+      <div class="guide-slide" id="slide4" style="display:none;">
+        <h2>Features ✨</h2>
+        <ul>
+          <li>8-directional movement</li>
+          <li>Weighted terrains (Grass = 2, Water = 5)</li>
+          <li>Real-time visualization</li>
+          <li>Animations + Stats (steps, path length, runtime)</li>
+        </ul>
+      </div>
+      <!-- Navigation -->
+      <div class="guide-nav">
+        <button id="prevBtn" type="button">⬅ Previous</button>
+        <button id="nextBtn" type="button">Next ➡</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div id="grid"></div>
+  
+  <div class="controls">
+    <select id="algorithm">
+      <option value="bfs">Breadth First Search (BFS)</option>
+      <option value="dijkstra">Dijkstra’s Algorithm</option>
+      <option value="astar">A* Search</option>
+      <option value="dfs">Depth First Search (DFS)</option>
+      <option value="greedy">Greedy Best-First Search</option>
+      <option value="bidirectional">Bidirectional BFS</option>
+    </select>
+    <button onclick="runAlgorithm()">Run</button>
+    <button onclick="clearGrid()">Clear Grid</button>
+  </div>
+
+  <!-- Legend -->
+  <div id="legend">
+    <div class="legend-item"><span class="legend-box start"></span> Start</div>
+    <div class="legend-item"><span class="legend-box end"></span> End</div>
+    <div class="legend-item"><span class="legend-box wall"></span> Wall</div>
+    <div class="legend-item"><span class="legend-box grass"></span> Grass (2)</div>
+    <div class="legend-item"><span class="legend-box water"></span> Water (5)</div>
+    <div class="legend-item"><span class="legend-box visited"></span> Visited</div>
+    <div class="legend-item"><span class="legend-box path"></span> Path</div>
+  </div>
+
+  <!-- Stats -->
+  <div id="stats">
+    <p><b>Steps Explored:</b> <span id="steps">0</span></p>
+    <p><b>Path Length:</b> <span id="pathLength">0</span></p>
+    <p><b>Runtime:</b> <span id="runtime">0 ms</span></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
